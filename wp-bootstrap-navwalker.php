@@ -33,7 +33,7 @@ if ( !class_exists( 'WP_Bootstrap_Navwalker' ) ) {
    *
    * @extends Walker_Nav_Menu
    */
-  class Bootstrap_Navwalker extends Walker_Nav_Menu {
+  class WP_Bootstrap_Navwalker extends Walker_Nav_Menu {
 
     private $dropdown = false;
 
