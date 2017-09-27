@@ -46,7 +46,7 @@ Update your `wp_nav_menu()` function in `header.php` to use the new walker by ad
 ``
 
 
-Typically the menu is wrapped with additional markup, here is an example of a ` navbar-fixed-top` menu that collapse for responsive navigation.
+Typically the menu is wrapped with additional markup, here is an example of a menu that collapse for responsive navigation.
 
 ```php
 <?php
