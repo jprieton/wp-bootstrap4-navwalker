@@ -65,7 +65,6 @@ $custom_logo = wp_get_attachment_image( get_theme_mod( 'custom_logo' ), 'full' )
 
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <?php
-    ini_set( 'xdebug.var_display_max_data', 3000 );
     wp_nav_menu( [
         'theme_location'  => 'top-menu',
         'depth'           => 2,
