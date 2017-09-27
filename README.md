@@ -72,7 +72,7 @@ $custom_logo = wp_get_attachment_image( get_theme_mod( 'custom_logo' ), 'full' )
         'container_class' => 'collapse navbar-collapse',
         'menu_class'      => 'nav navbar-nav ml-auto',
         'fallback_cb'     => 'Bootstrap_Navwalker::fallback',
-        'walker'          => new NavMenu()
+        'walker'          => new Bootstrap_Navwalker()
     ] );
     ?>
   </div>
