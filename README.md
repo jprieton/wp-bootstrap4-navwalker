@@ -49,34 +49,33 @@ Update your `wp_nav_menu()` function in `header.php` to use the new walker by ad
 Typically the menu is wrapped with additional markup, here is an example of a ` navbar-fixed-top` menu that collapse for responsive navigation.
 
 ```php
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="<?php echo home_url(); ?>">
-                <?php bloginfo('name'); ?>
-            </a>
-    </div>
+<?php
+$custom_logo = wp_get_attachment_image( get_theme_mod( 'custom_logo' ), 'full' );
+?>
 
-        <?php
-            wp_nav_menu( array(
-                'menu'              => 'my-menu',
-                'theme_location'    => 'my-theme-location',
-                'depth'             => 2,
-                'container'         => 'div',
-                'container_class'   => 'collapse navbar-collapse',
-                'container_id'      => 'bs-example-navbar-collapse-1',
-                'menu_class'        => 'nav navbar-nav',
-                'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
-                'walker'            => new WP_Bootstrap_Navwalker())
-            );
-        ?>
-    </div>
+<nav class="navbar navbar-light bg-light navbar-expand-lg justify-content-between">
+
+  <a class="navbar-brand" href="<?php echo home_url() ?>">
+    <?php echo $custom_logo ?>
+  </a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <?php
+    ini_set( 'xdebug.var_display_max_data', 3000 );
+    wp_nav_menu( [
+        'theme_location'  => 'top-menu',
+        'depth'           => 2,
+        'container'       => 'div',
+        'container_class' => 'collapse navbar-collapse',
+        'menu_class'      => 'nav navbar-nav ml-auto',
+        'fallback_cb'     => 'Bootstrap_Navwalker::fallback',
+        'walker'          => new NavMenu()
+    ] );
+    ?>
+  </div>
 </nav>
 ```
