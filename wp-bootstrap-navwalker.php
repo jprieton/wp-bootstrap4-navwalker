@@ -24,7 +24,7 @@ if ( !defined( 'ABSPATH' ) ) {
 if ( !class_exists( 'WP_Bootstrap_Navwalker' ) ) {
 
   /**
-   * Pagination class
+   * WP_Bootstrap_Navwalker class
    *
    * @package        Template
    * @subpackage     Bootstrap4
