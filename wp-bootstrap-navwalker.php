@@ -8,17 +8,12 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 /**
- * WP Bootstrap Navwalker
- *
- * @package WP-Bootstrap-Navwalker
- */
-/**
  * Class Name: WP_Bootstrap_Navwalker
- * Plugin Name: WP Bootstrap Navwalker
+ * Plugin Name: WP Bootstrap4 Navwalker
  * Plugin URI:  https://github.com/jprieton/wp-bootstrap4-navwalker
  * Description: A custom WordPress nav walker class to implement the Bootstrap 3 navigation style in a custom theme using the WordPress built in menu manager.
- * Author: Javier Prieto
- * Version: 2.0.5
+ * Author: Javier Prieto <jprieton@gmail.com>
+ * Version: 1.1.0
  * Author URI: https://github.com/jprieton/
  * GitHub Plugin URI: https://github.com/jprieton/wp-bootstrap4-navwalker
  * GitHub Branch: master
@@ -29,14 +24,36 @@ if ( !defined( 'ABSPATH' ) ) {
 if ( !class_exists( 'WP_Bootstrap_Navwalker' ) ) {
 
   /**
-   * WP_Bootstrap_Navwalker class.
+   * Pagination class
    *
-   * @extends Walker_Nav_Menu
+   * @package        Template
+   * @subpackage     Bootstrap4
+   *
+   * @since          1.0.0
+   * @see            https://getbootstrap.com/docs/4.0/components/navbar/
+   * @extends        Walker_Nav_Menu
+   * @author         Javier Prieto <jprieton@gmail.com>
    */
   class WP_Bootstrap_Navwalker extends Walker_Nav_Menu {
 
+    /**
+     * @since       1.0.0
+     * @access      public
+     * @var type    bool
+     */
     private $dropdown = false;
 
+    /**
+     * Starts the list before the elements are added.
+     *
+     * @since       1.0.0
+     *
+     * @see Walker::start_lvl()
+     *
+     * @param string   $output Passed by reference. Used to append additional content.
+     * @param int      $depth  Depth of menu item. Used for padding.
+     * @param stdClass $args   An object of wp_nav_menu() arguments.
+     */
     public function start_lvl( &$output, $depth = 0, $args = array() ) {
       if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
         $t = '';
@@ -50,6 +67,17 @@ if ( !class_exists( 'WP_Bootstrap_Navwalker' ) ) {
       $output         .= $n . str_repeat( $t, $depth ) . '<div class="dropdown-menu" role="menu">' . $n;
     }
 
+    /**
+     * Ends the list of after the elements are added.
+     *
+     * @since       1.0.0
+     *
+     * @see Walker::end_lvl()
+     *
+     * @param string   $output Passed by reference. Used to append additional content.
+     * @param int      $depth  Depth of menu item. Used for padding.
+     * @param stdClass $args   An object of wp_nav_menu() arguments.
+     */
     public function end_lvl( &$output, $depth = 0, $args = array() ) {
       if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
         $t = '';
@@ -63,6 +91,19 @@ if ( !class_exists( 'WP_Bootstrap_Navwalker' ) ) {
       $output         .= $n . str_repeat( $t, $depth ) . '</div>' . $n;
     }
 
+    /**
+     * Starts the element output.
+     *
+     * @since 1.0.0
+     *
+     * @see Walker::start_el()
+     *
+     * @param string   $output Passed by reference. Used to append additional content.
+     * @param WP_Post  $item   Menu item data object.
+     * @param int      $depth  Depth of menu item. Used for padding.
+     * @param stdClass $args   An object of wp_nav_menu() arguments.
+     * @param int      $id     Current item ID.
+     */
     public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
       if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
         $t = '';
@@ -73,6 +114,14 @@ if ( !class_exists( 'WP_Bootstrap_Navwalker' ) ) {
       }
 
       $indent = str_repeat( $t, $depth );
+
+      if ( 0 === strcasecmp( $item->attr_title, 'divider' ) && $this->dropdown ) {
+        $output .= $indent . '<div class="dropdown-divider"></div>' . $n;
+        return;
+      } elseif ( 0 === strcasecmp( $item->title, 'divider' ) && $this->dropdown ) {
+        $output .= $indent . '<div class="dropdown-divider"></div>' . $n;
+        return;
+      }
 
       $classes   = empty( $item->classes ) ? [] : (array) $item->classes;
       $classes[] = 'menu-item-' . $item->ID;
@@ -217,6 +266,18 @@ if ( !class_exists( 'WP_Bootstrap_Navwalker' ) ) {
       $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
     }
 
+    /**
+     * Ends the element output, if needed.
+     *
+     * @since 1.0.0
+     *
+     * @see Walker::end_el()
+     *
+     * @param string   $output Passed by reference. Used to append additional content.
+     * @param WP_Post  $item   Page data object. Not used.
+     * @param int      $depth  Depth of page. Not Used.
+     * @param stdClass $args   An object of wp_nav_menu() arguments.
+     */
     public function end_el( &$output, $item, $depth = 0, $args = array() ) {
       if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
         $t = '';
@@ -232,7 +293,7 @@ if ( !class_exists( 'WP_Bootstrap_Navwalker' ) ) {
     /**
      * Menu Fallback
      *
-     * @since 1.2.0
+     * @since 1.0.0
      *
      * @param array $args passed from the wp_nav_menu function.
      */
