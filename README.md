@@ -43,7 +43,7 @@ Update your `wp_nav_menu()` function in `header.php` to use the new walker by ad
                 'walker'            => new WP_Bootstrap_Navwalker())
             );
         ?>
-``
+```
 
 
 Typically the menu is wrapped with additional markup, here is an example of a menu that collapse for responsive navigation.
