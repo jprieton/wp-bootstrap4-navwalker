@@ -83,6 +83,10 @@ $custom_logo = wp_get_attachment_image( get_theme_mod( 'custom_logo' ), 'full' )
 
 Simply add a Link menu item with a **URL** of `#` and a **Link Text** or **Title Attribute** of `divider` (case-insensitive so ‘divider’ or ‘Divider’ will both work ) and the class will do the rest.
 
+## Notes
+
+If you need add custom texdomain to _Add a menu_ string, in line 316 you can add your textdomain identifier.
+
 ## Bug tracker
 
 Have a bug? Please create an issue on GitHub at https://github.com/jprieton/wp-bootstrap4-navwalker/issues
