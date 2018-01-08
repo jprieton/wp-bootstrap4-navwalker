@@ -123,7 +123,7 @@ if ( !class_exists( 'WP_Bootstrap_Navwalker' ) ) {
         return;
       }
 
-      $classes   = empty( $item->classes ) ? [] : (array) $item->classes;
+      $classes   = empty( $item->classes ) ? array() : (array) $item->classes;
       $classes[] = 'menu-item-' . $item->ID;
       $classes[] = 'nav-item';
 
@@ -233,7 +233,7 @@ if ( !class_exists( 'WP_Bootstrap_Navwalker' ) ) {
        */
       $title = apply_filters( 'nav_menu_item_title', $title, $item, $args, $depth );
 
-      $item_classes = [ 'nav-link' ];
+      $item_classes = array( 'nav-link' );
 
       if ( $args->walker->has_children ) {
         $item_classes[] = 'dropdown-toggle';
@@ -300,13 +300,13 @@ if ( !class_exists( 'WP_Bootstrap_Navwalker' ) ) {
     public static function fallback( $args ) {
       if ( current_user_can( 'edit_theme_options' ) ) {
 
-        $defaults = [
+        $defaults = array(
             'container'       => 'div',
             'container_id'    => false,
             'container_class' => false,
             'menu_class'      => 'menu',
             'menu_id'         => false,
-        ];
+        );
         $args     = wp_parse_args( $args, $defaults );
         if ( !empty( $args['container'] ) ) {
           echo sprintf( '<%s id="%s" class="%s">', $args['container'], $args['container_id'], $args['container_class'] );

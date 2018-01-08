@@ -65,7 +65,7 @@ $custom_logo = wp_get_attachment_image( get_theme_mod( 'custom_logo' ), 'full' )
 
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <?php
-    wp_nav_menu( [
+    wp_nav_menu( array(
         'theme_location'  => 'top-menu',
         'depth'           => 2,
         'container'       => 'div',
@@ -73,7 +73,7 @@ $custom_logo = wp_get_attachment_image( get_theme_mod( 'custom_logo' ), 'full' )
         'menu_class'      => 'nav navbar-nav ml-auto',
         'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
         'walker'          => new WP_Bootstrap_Navwalker()
-    ] );
+    ) );
     ?>
   </div>
 </nav>
