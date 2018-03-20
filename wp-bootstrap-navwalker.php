@@ -13,7 +13,7 @@ if ( !defined( 'ABSPATH' ) ) {
  * Plugin URI:  https://github.com/jprieton/wp-bootstrap4-navwalker
  * Description: A custom WordPress nav walker class to implement the Bootstrap 3 navigation style in a custom theme using the WordPress built in menu manager.
  * Author: Javier Prieto <jprieton@gmail.com>
- * Version: 1.1.1
+ * Version: 1.1.2
  * Author URI: https://github.com/jprieton/
  * GitHub Plugin URI: https://github.com/jprieton/wp-bootstrap4-navwalker
  * GitHub Branch: master
@@ -240,6 +240,7 @@ if ( !class_exists( 'WP_Bootstrap_Navwalker' ) ) {
       }
 
       if ( 0 < $depth ) {
+        $item_classes = array_diff( $item_classes, [ 'nav-link' ] );
         $item_classes[] = 'dropdown-item';
       }
 

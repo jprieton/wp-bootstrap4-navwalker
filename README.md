@@ -4,6 +4,12 @@ A custom WordPress nav walker class to fully implement the Twitter Bootstrap 4.x
 
 ## Installation
 
+### Using it as a plugin
+
+Place **wp-bootstrap-navwalker.php** in your WordPress plugin folder `/wp-content/plugins/wp-bootstrap4-navwalker/` and activate.
+
+### ...Or using it as a dependency on your theme
+
 Place **wp-bootstrap-navwalker.php** in your WordPress theme folder `/wp-content/your-theme/`
 
 Open your WordPress themes **functions.php** file  `/wp-content/your-theme/functions.php` and add the following code:
