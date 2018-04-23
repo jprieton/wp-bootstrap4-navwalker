@@ -11,7 +11,7 @@ if ( !defined( 'ABSPATH' ) ) {
  * Class Name: WP_Bootstrap_Navwalker
  * Plugin Name: WP Bootstrap4 Navwalker
  * Plugin URI:  https://github.com/jprieton/wp-bootstrap4-navwalker
- * Description: A custom WordPress nav walker class to implement the Bootstrap 3 navigation style in a custom theme using the WordPress built in menu manager.
+ * Description: A custom WordPress nav walker class to implement the Bootstrap 4.x navigation style in a custom theme using the WordPress built in menu manager.
  * Author: Javier Prieto
  * Version: 1.1.2
  * Author URI: https://github.com/jprieton/
