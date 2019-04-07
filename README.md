@@ -23,11 +23,11 @@ If you encounter errors with the above code use a check like this to return clea
 
 ```php
 if ( ! file_exists( get_template_directory() . '/wp-bootstrap-navwalker.php' ) ) {
-	// file does not exist... return an error.
-	return new WP_Error( 'wp-bootstrap-navwalker-missing', __( 'It appears the wp-bootstrap-navwalker.php file may be missing.', 'wp-bootstrap-navwalker' ) );
+  // file does not exist... return an error.
+  return new WP_Error( 'wp-bootstrap-navwalker-missing', __( 'It appears the wp-bootstrap-navwalker.php file may be missing.', 'wp-bootstrap-navwalker' ) );
 } else {
-	// file exists... require it.
-    require_once get_template_directory . 'wp-bootstrap-navwalker.php';
+  // file exists... require it.
+  require_once get_template_directory . 'wp-bootstrap-navwalker.php';
 }
 ```
 
@@ -36,20 +36,20 @@ if ( ! file_exists( get_template_directory() . '/wp-bootstrap-navwalker.php' ) )
 Update your `wp_nav_menu()` function in `header.php` to use the new walker by adding a "walker" item to the wp_nav_menu array.
 
 ```php
- <?php
-            wp_nav_menu( array(
-                'menu'              => 'primary',
-                'theme_location'    => 'primary',
-                'depth'             => 2,
-                'container'         => 'div',
-                'container_id'      => 'navbarNavDropdown',
-                'container_class'   => 'collapse navbar-collapse',
-                'container_id'      => 'bs-example-navbar-collapse-1',
-                'menu_class'        => 'nav navbar-nav',
-                'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
-                'walker'            => new WP_Bootstrap_Navwalker())
-            );
-        ?>
+<?php
+wp_nav_menu( array(
+    'menu'              => 'primary',
+    'theme_location'    => 'primary',
+    'depth'             => 2,
+    'container'         => 'div',
+    'container_id'      => 'navbarNavDropdown',
+    'container_class'   => 'collapse navbar-collapse',
+    'container_id'      => 'bs-example-navbar-collapse-1',
+    'menu_class'        => 'nav navbar-nav',
+    'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+    'walker'            => new WP_Bootstrap_Navwalker())
+);
+?>
 ```
 
 
@@ -70,18 +70,18 @@ $custom_logo = wp_get_attachment_image( get_theme_mod( 'custom_logo' ), 'full' )
     <span class="navbar-toggler-icon"></span>
   </button>
 
-    <?php
-    wp_nav_menu( array(
-        'theme_location'  => 'top-menu',
-        'depth'           => 2,
-        'container'       => 'div',
-        'container_id'    => 'navbarNavDropdown',
-        'container_class' => 'collapse navbar-collapse',
-        'menu_class'      => 'nav navbar-nav ml-auto',
-        'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
-        'walker'          => new WP_Bootstrap_Navwalker()
-    ) );
-    ?>
+  <?php
+  wp_nav_menu( array(
+      'theme_location'  => 'top-menu',
+      'depth'           => 2,
+      'container'       => 'div',
+      'container_id'    => 'navbarNavDropdown',
+      'container_class' => 'collapse navbar-collapse',
+      'menu_class'      => 'nav navbar-nav ml-auto',
+      'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
+      'walker'          => new WP_Bootstrap_Navwalker()
+  ) );
+  ?>
 </nav>
 ```
 
