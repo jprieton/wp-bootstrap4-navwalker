@@ -1,4 +1,6 @@
-# WP Bootstrap 4.x Navwalker
+# WP Bootstrap 4.x Navwalker (no longer maintained)
+
+> *Note:* This repository is no longer maintanied, please use [wp-bootstrap/wp-bootstrap-navwalker](https://github.com/wp-bootstrap/wp-bootstrap-navwalker), this class was based on their navwalker for Bootstrap 3.x
 
 A custom WordPress nav walker class based on 3.x version of https://github.com/wp-bootstrap/wp-bootstrap-navwalker/ to fully implement the Twitter Bootstrap 4.x navigation style in a custom theme using the WordPress built in menu manager
 
